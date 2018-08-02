@@ -52,6 +52,13 @@ export default class InputToolbar extends React.Component {
     }
     return null;
   }
+  
+  renderRightActions(){
+    if (this.props.renderRightActions) {
+      return this.props.renderRightActions(this.props);
+    }
+    return null;
+  }
 
   renderSend() {
     if (this.props.renderSend) {
@@ -85,8 +92,9 @@ export default class InputToolbar extends React.Component {
         style={[styles.container, this.props.containerStyle, { position: this.state.position }]}
       >
         <View style={[styles.primary, this.props.primaryStyle]}>
-          {this.renderActions()}
           {this.renderComposer()}
+          {this.renderActions()}
+          {this.renderRightActions()}
           {this.renderSend()}
         </View>
         {this.renderAccessory()}
